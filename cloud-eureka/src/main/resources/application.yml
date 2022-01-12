@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: eureka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:7900/eureka/,http://localhost:7901/eureka/,http://localhost:7902/eureka/
+  server:
+    # 自我保护,默认开启
+    enable-self-preservation: false
+    # 自我保护阈值默认0.85
+    renewal-percent-threshold: 0.85
+    # 剔除服务间隔毫秒数
+    eviction-interval-timer-in-ms: 1000
+    # 关闭readOnly读注册表,默认true关闭后能使得获取的速度快一点,但是可能会发生读写冲突
+    use-read-only-response-cache: false
+    # readWrite和readOnly同步时间间隔,默认30s,设置小点可提高服务被发现的速度
+    response-cache-update-interval-ms: 1000
+
+---
+spring:
+  profiles: 7900
+server:
+  port: 7900
+eureka:
+  instance:
+    hostname: eureka-7900
+
+---
+spring:
+  profiles: 7901
+server:
+  port: 7901
+eureka:
+  instance:
+    hostname: eureka-7901
+
+---
+spring:
+  profiles: 7902
+server:
+  port: 7902
+eureka:
+  instance:
+    hostname: eureka-7902

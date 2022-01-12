@@ -1,0 +1,10 @@
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      # 生产中要把多个地址随机打乱，避免固定某一个节点压力过大
+      defaultZone: http://localhost:7900/eureka/,http://localhost:7901/eureka/,http://localhost:7902/eureka/
+spring:
+  application:
+    name: api-passenger
